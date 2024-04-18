@@ -1,7 +1,13 @@
+import os
 from flask import Flask, render_template, request
 from flask_socketio import SocketIO
 
 from master import Master
+
+
+# Get environment variables.
+HOST = os.getenv('FLASK_HOST', '0.0.0.0')
+PORT = int(os.getenv('FLASK_PORT', 8080))
 
 # Initialize the flask app.
 app = Flask(__name__)
@@ -103,4 +109,4 @@ def submit(data):
 # Run the app with web sockets capabilities.
 if __name__ == '__main__':
 	app.debug = True
-	socketio.run(app, host='0.0.0.0', port=8080)
+	socketio.run(app, host=HOST, port=PORT)

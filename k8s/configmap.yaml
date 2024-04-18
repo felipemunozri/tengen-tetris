@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: tengen-tetris
+data:
+  flask_host: 0.0.0.0
+  flask_port: "8080"

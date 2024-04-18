@@ -38,7 +38,7 @@ class Database:
 			connection = connect(self.filename)
 		except Error as error:
 			print('DATABASE ERROR: could not open a connection to the database')
-			print(Error)
+			print(error.sqlite_errorname)
 			return None
 
 		# Execute the query.
@@ -48,7 +48,7 @@ class Database:
 			result = cursor.fetchall()
 		except Error as error:
 			print('DATABASE ERROR: could not execute the query')
-			print(Error)
+			print(error.sqlite_errorname)
 			return None
 
 		# Commit the changes and close the connection.
@@ -57,7 +57,7 @@ class Database:
 			connection.close()
 		except Error as error:
 			print('DATABASE ERROR: could not close connection to the database')
-			print(Error)
+			print(error.sqlite_errorname)
 			return None
 
 		return result

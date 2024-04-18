@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ .Values.appName }}
+data:
+  FLASK_HOST: "{{ .Values.configmap.data.serverHost }}"
+  FLASK_PORT: "{{ .Values.configmap.data.serverPort }}"

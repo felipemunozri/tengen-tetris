@@ -1,0 +1,23 @@
+# app name info
+appName: tengen-tetris
+# deployment info
+deployment:
+  replicas: 1
+  image:
+    name: felipemunozri/tengen-tetris
+    tag: "2.0"
+  pullPolicy: Always
+  resources:
+    limits:
+      memory: 128Mi
+      cpu: 500m
+# configmap info
+configmap:
+  name: tengen-tetris
+  data:
+    serverHost: 0.0.0.0
+    serverPort: 8080
+# ingress info
+ingress:
+  className: nginx
+  host: tengen-tetris.test

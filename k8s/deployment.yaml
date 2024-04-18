@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: tengen-tetris
+spec:
+  selector:
+    matchLabels:
+      app: tengen-tetris
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: tengen-tetris
+    spec:
+      containers:
+      - name: tengen-tetris
+        image: felipemunozri/tengen-tetris:2.0
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+        ports:
+        - containerPort: 8080
+        envFrom:
+        - configMapRef:
+            name: tengent-tetris
